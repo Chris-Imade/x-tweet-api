@@ -5,10 +5,11 @@ const fs = require("fs");
 const path = require("path");
 const session = require("express-session");
 const winston = require("winston");
+const cors = require("cors");
 
 // Logging Configuration
 const logger = winston.createLogger({
-  level: 'info',
+  level: "info",
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.errors({ stack: true }),
@@ -17,34 +18,44 @@ const logger = winston.createLogger({
   ),
   transports: [
     new winston.transports.Console({
-      format: winston.format.simple()
+      format: winston.format.simple(),
     }),
-    new winston.transports.File({ 
-      filename: 'error.log', 
-      level: 'error' 
+    new winston.transports.File({
+      filename: "error.log",
+      level: "error",
     }),
-    new winston.transports.File({ 
-      filename: 'combined.log' 
-    })
-  ]
+    new winston.transports.File({
+      filename: "combined.log",
+    }),
+  ],
 });
 
 require("dotenv").config();
 
 const app = express();
-const upload = multer({ 
+const upload = multer({
   dest: "uploads/",
-  limits: { 
-    fileSize: 5 * 1024 * 1024 // 5MB file size limit
-  }
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB file size limit
+  },
 });
 
 // Middleware with Enhanced Logging
 app.use((req, res, next) => {
-  logger.info(`[${req.method}] ${req.path} - Body: ${JSON.stringify(req.body)}`);
+  logger.info(
+    `[${req.method}] ${req.path} - Body: ${JSON.stringify(req.body)}`
+  );
   next();
 });
 
+// Middleware configuration
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://www.chonkler.fun"],
+    methods: ["GET", "POST", "PUT", "DELETE"], // Optional: Specify allowed HTTP methods
+    credentials: true, // Optional: Include cookies and other credentials in requests
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -66,13 +77,13 @@ const ALLOWED_MEDIA_TYPES = [
 
 // Validate Environment Variables
 const requiredEnvVars = [
-  'TWITTER_CONSUMER_KEY', 
-  'TWITTER_CONSUMER_SECRET', 
-  'TWITTER_ACCESS_TOKEN', 
-  'TWITTER_ACCESS_TOKEN_SECRET'
+  "TWITTER_CONSUMER_KEY",
+  "TWITTER_CONSUMER_SECRET",
+  "TWITTER_ACCESS_TOKEN",
+  "TWITTER_ACCESS_TOKEN_SECRET",
 ];
 
-requiredEnvVars.forEach(variable => {
+requiredEnvVars.forEach((variable) => {
   if (!process.env[variable]) {
     logger.error(`Missing required environment variable: ${variable}`);
     process.exit(1);
@@ -90,7 +101,7 @@ const client = new TwitterApi({
 // OAuth Routes
 app.get("/auth/twitter", async (req, res) => {
   try {
-    logger.info('Initiating Twitter OAuth Authentication');
+    logger.info("Initiating Twitter OAuth Authentication");
     const authLink = await client.generateAuthLink(
       process.env.TWITTER_CALLBACK_URL,
       { linkMode: "authorize" }
@@ -101,13 +112,13 @@ app.get("/auth/twitter", async (req, res) => {
 
     res.redirect(authLink.url);
   } catch (error) {
-    logger.error('Twitter Authentication Failed', { 
-      error: error.message, 
-      stack: error.stack 
+    logger.error("Twitter Authentication Failed", {
+      error: error.message,
+      stack: error.stack,
     });
-    res.status(500).json({ 
-      error: "Authentication failed", 
-      details: error.message 
+    res.status(500).json({
+      error: "Authentication failed",
+      details: error.message,
     });
   }
 });
@@ -133,22 +144,22 @@ app.get("/auth/twitter/callback", async (req, res) => {
 
     res.send(`Authenticated as ${screenName}. You can now close this window.`);
   } catch (error) {
-    logger.error('Twitter Authentication Callback Failed', { 
-      error: error.message, 
-      stack: error.stack 
+    logger.error("Twitter Authentication Callback Failed", {
+      error: error.message,
+      stack: error.stack,
     });
-    res.status(500).json({ 
-      error: "Authentication callback failed", 
-      details: error.message 
+    res.status(500).json({
+      error: "Authentication callback failed",
+      details: error.message,
     });
   }
 });
 
 // Tweet Endpoint with Verbose Logging
 app.post("/tweet", upload.single("media"), async (req, res) => {
-  logger.info('Tweet Endpoint Accessed', { 
-    body: req.body, 
-    file: req.file 
+  logger.info("Tweet Endpoint Accessed", {
+    body: req.body,
+    file: req.file,
   });
 
   try {
@@ -210,8 +221,8 @@ app.post("/tweet", upload.single("media"), async (req, res) => {
 
     const tweet = await rwClient.v2.tweet(tweetOptions);
 
-    logger.info('Tweet Successfully Posted', { 
-      tweetId: tweet.data.id 
+    logger.info("Tweet Successfully Posted", {
+      tweetId: tweet.data.id,
     });
 
     res.status(201).json({
@@ -220,31 +231,31 @@ app.post("/tweet", upload.single("media"), async (req, res) => {
       text: tweet.data.text,
     });
   } catch (error) {
-    logger.error('Tweet Creation Failed', { 
-      error: error.message, 
-      body: req.body, 
+    logger.error("Tweet Creation Failed", {
+      error: error.message,
+      body: req.body,
       file: req.file,
-      stack: error.stack 
+      stack: error.stack,
     });
     res.status(500).json({
       error: "Tweet creation failed",
       details: error.message,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   }
 });
 
 // Enhanced Error Handling Middleware
 app.use((err, req, res, next) => {
-  logger.error(`Unhandled Error: ${err.message}`, { 
+  logger.error(`Unhandled Error: ${err.message}`, {
     stack: err.stack,
     path: req.path,
-    method: req.method
+    method: req.method,
   });
   res.status(500).json({
-    error: 'Internal Server Error',
+    error: "Internal Server Error",
     message: err.message,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
