@@ -12,5 +12,13 @@
   },
   "scripts": {
     "start": "nodemon app.js"
-  }
+  },
+  "description": "## Quick Start Guide",
+  "main": "app.js",
+  "devDependencies": {},
+  "keywords": [
+    "twitter-bot"
+  ],
+  "author": "https://github.com/Chris-Imade/Chris-Imade",
+  "license": "ISC"
 }
