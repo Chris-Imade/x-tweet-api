@@ -45,3 +45,7 @@
 {"body":{"text":"Testing X API for tweeting with GIF"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"35c775081bd3e6df19202307ff599635","mimetype":"video/mp4","originalname":"WhatsApp Video 2025-01-24 at 11.53.07 AM.mp4","path":"uploads/35c775081bd3e6df19202307ff599635","size":1493400},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-01-24T11:52:50.016Z"}
 {"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-01-24T11:53:00.662Z","tweetId":"1882758495822389482"}
 {"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-01-24T11:53:13.633Z","tweetId":"1882758552407638404"}
+{"level":"info","message":"Server running on port 4351","timestamp":"2025-01-26T20:37:02.071Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-01-26T20:38:41.959Z"}
+{"body":{"text":"Testing X API for tweeting with GIF"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"e7fe40f7985db6ed236dd14201380929","mimetype":"video/mp4","originalname":"WhatsApp Video 2025-01-24 at 11.53.07 AM.mp4","path":"uploads/e7fe40f7985db6ed236dd14201380929","size":1493400},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-01-26T20:38:42.008Z"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-01-26T20:38:56.855Z","tweetId":"1883615631469138358"}
