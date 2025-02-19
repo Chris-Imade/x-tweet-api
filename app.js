@@ -98,151 +98,114 @@ const client = new TwitterApi({
   clientSecret: process.env.TWITTER_CLIENT_SECRET,
 });
 
-// OAuth Routes
-app.get("/auth/twitter", async (req, res) => {
-  try {
-    logger.info("Initiating Twitter OAuth Authentication");
-    const authLink = await client.generateAuthLink(
-      process.env.TWITTER_CALLBACK_URL,
-      { linkMode: "authorize" }
-    );
+const tweetQueue = [];
 
-    req.session.oauth_token = authLink.oauth_token;
-    req.session.oauth_token_secret = authLink.oauth_token_secret;
-
-    res.redirect(authLink.url);
-  } catch (error) {
-    logger.error("Twitter Authentication Failed", {
-      error: error.message,
-      stack: error.stack,
-    });
-    res.status(500).json({
-      error: "Authentication failed",
-      details: error.message,
-    });
+// Function to process the tweet queue
+const processTweetQueue = () => {
+  if (tweetQueue.length === 0) {
+    return;
   }
-});
 
-app.get("/auth/twitter/callback", async (req, res) => {
-  try {
-    const { oauth_token, oauth_verifier } = req.query;
-    const { oauth_token_secret } = req.session;
+  const { text, mediaPath, mediaType } = tweetQueue.shift();
 
-    const client = new TwitterApi({
-      appKey: process.env.TWITTER_CONSUMER_KEY,
-      appSecret: process.env.TWITTER_CONSUMER_SECRET,
-      accessToken: oauth_token,
-      accessSecret: oauth_token_secret,
-    });
+  // Configure Twitter client with single user credentials
+  const twitterClient = new TwitterApi({
+    appKey: process.env.TWITTER_CONSUMER_KEY,
+    appSecret: process.env.TWITTER_CONSUMER_SECRET,
+    accessToken: process.env.TWITTER_ACCESS_TOKEN,
+    accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+  });
+  const rwClient = twitterClient.readWrite;
 
-    const { accessToken, accessSecret, screenName, userId } =
-      await client.login(oauth_verifier);
+  const postTweet = async () => {
+    try {
+      let mediaId = null;
+      if (mediaPath) {
+        const mediaBuffer = fs.readFileSync(mediaPath);
+        const mediaUpload = await rwClient.v1.uploadMedia(mediaBuffer, {
+          mimeType: mediaType,
+        });
+        mediaId = mediaUpload;
+        fs.unlinkSync(mediaPath);
+      }
 
-    // Save user tokens securely (in production, use a database)
-    process.env[`TWITTER_ACCESS_TOKEN_${screenName}`] = accessToken;
-    process.env[`TWITTER_ACCESS_TOKEN_SECRET_${screenName}`] = accessSecret;
+      const tweetOptions = {
+        text: text || "",
+        ...(mediaId && { media: { media_ids: [mediaId] } }),
+      };
 
-    res.send(`Authenticated as ${screenName}. You can now close this window.`);
-  } catch (error) {
-    logger.error("Twitter Authentication Callback Failed", {
-      error: error.message,
-      stack: error.stack,
-    });
-    res.status(500).json({
-      error: "Authentication callback failed",
-      details: error.message,
-    });
-  }
-});
+      const tweet = await rwClient.v2.tweet(tweetOptions);
+
+      logger.info("Tweet Successfully Posted", {
+        tweetId: tweet.data.id,
+      });
+
+      // Log when the tweet has been posted
+      logger.info("Tweet from queue posted", {
+        text,
+        mediaPath,
+        mediaType,
+        tweetId: tweet.data.id,
+      });
+
+      // Process the next tweet in the queue
+      processTweetQueue();
+    } catch (error) {
+      logger.error("Tweet Creation Failed", {
+        error: error.message,
+        stack: error.stack,
+      });
+
+      // Process the next tweet in the queue even if there was an error
+      processTweetQueue();
+    }
+  };
+
+  setTimeout(postTweet, 24 * 60 * 60 * 1000); // Schedule tweet to be posted after 24 hours
+};
 
 // Tweet Endpoint with Verbose Logging
-app.post("/tweet", upload.single("media"), async (req, res) => {
+app.post("/tweet", upload.single("media"), (req, res) => {
   logger.info("Tweet Endpoint Accessed", {
     body: req.body,
     file: req.file,
   });
 
-  try {
-    const { text, userId } = req.body;
+  const { text } = req.body;
 
-    // Validate text or media presence
-    if (!text && !req.file) {
-      return res.status(400).json({
-        error: "No text or media provided",
-        supportedMediaTypes: ALLOWED_MEDIA_TYPES,
-      });
-    }
-
-    // Media validation
-    if (req.file) {
-      if (!ALLOWED_MEDIA_TYPES.includes(req.file.mimetype)) {
-        fs.unlinkSync(req.file.path);
-        return res.status(400).json({
-          error: "Unsupported media type",
-          supportedTypes: ALLOWED_MEDIA_TYPES,
-          uploadedType: req.file.mimetype,
-        });
-      }
-    }
-
-    // Configure Twitter client based on userId
-    const twitterConfig = userId
-      ? {
-          appKey: process.env.TWITTER_CONSUMER_KEY,
-          appSecret: process.env.TWITTER_CONSUMER_SECRET,
-          accessToken: process.env[`TWITTER_ACCESS_TOKEN_${userId}`],
-          accessSecret: process.env[`TWITTER_ACCESS_TOKEN_SECRET_${userId}`],
-        }
-      : {
-          appKey: process.env.TWITTER_CONSUMER_KEY,
-          appSecret: process.env.TWITTER_CONSUMER_SECRET,
-          accessToken: process.env.TWITTER_ACCESS_TOKEN,
-          accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
-        };
-
-    const twitterClient = new TwitterApi(twitterConfig);
-    const rwClient = twitterClient.readWrite;
-
-    // Rest of tweet posting logic
-    let mediaId = null;
-    if (req.file) {
-      const mediaBuffer = fs.readFileSync(req.file.path);
-      const mediaUpload = await rwClient.v1.uploadMedia(mediaBuffer, {
-        mimeType: req.file.mimetype,
-      });
-      mediaId = mediaUpload;
-      fs.unlinkSync(req.file.path);
-    }
-
-    const tweetOptions = {
-      text: text || "",
-      ...(mediaId && { media: { media_ids: [mediaId] } }),
-    };
-
-    const tweet = await rwClient.v2.tweet(tweetOptions);
-
-    logger.info("Tweet Successfully Posted", {
-      tweetId: tweet.data.id,
-    });
-
-    res.status(201).json({
-      success: true,
-      tweet_id: tweet.data.id,
-      text: tweet.data.text,
-    });
-  } catch (error) {
-    logger.error("Tweet Creation Failed", {
-      error: error.message,
-      body: req.body,
-      file: req.file,
-      stack: error.stack,
-    });
-    res.status(500).json({
-      error: "Tweet creation failed",
-      details: error.message,
-      timestamp: new Date().toISOString(),
+  // Validate text or media presence
+  if (!text && !req.file) {
+    return res.status(400).json({
+      error: "No text or media provided",
+      supportedMediaTypes: ALLOWED_MEDIA_TYPES,
     });
   }
+
+  // Media validation
+  if (req.file && !ALLOWED_MEDIA_TYPES.includes(req.file.mimetype)) {
+    fs.unlinkSync(req.file.path);
+    return res.status(400).json({
+      error: "Unsupported media type",
+      supportedTypes: ALLOWED_MEDIA_TYPES,
+      uploadedType: req.file.mimetype,
+    });
+  }
+
+  // Add tweet to the queue
+  tweetQueue.push({
+    text,
+    mediaPath: req.file ? req.file.path : null,
+    mediaType: req.file ? req.file.mimetype : null,
+  });
+
+  // Respond immediately
+  res.status(202).json({
+    success: true,
+    message: "Tweet added to queue and will be posted in due time.",
+  });
+
+  // Process the tweet queue
+  processTweetQueue();
 });
 
 // Enhanced Error Handling Middleware
@@ -259,7 +222,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4951;
 app.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`);
 });

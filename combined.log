@@ -49,3 +49,57 @@
 {"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-01-26T20:38:41.959Z"}
 {"body":{"text":"Testing X API for tweeting with GIF"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"e7fe40f7985db6ed236dd14201380929","mimetype":"video/mp4","originalname":"WhatsApp Video 2025-01-24 at 11.53.07 AM.mp4","path":"uploads/e7fe40f7985db6ed236dd14201380929","size":1493400},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-01-26T20:38:42.008Z"}
 {"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-01-26T20:38:56.855Z","tweetId":"1883615631469138358"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T17:29:59.014Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T17:30:03.300Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T17:30:29.993Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T17:41:32.566Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T17:41:38.106Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T17:48:44.551Z"}
+{"body":{"text":"Testing X API for tweeting with GIF"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"aa7878e394dd4f8db0d7b12851578a4d","mimetype":"image/jpeg","originalname":"SocialDefiningLuxury.jpg","path":"uploads/aa7878e394dd4f8db0d7b12851578a4d","size":159574},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T17:48:44.600Z"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-19T17:48:49.890Z","tweetId":"1892270129678860572"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T17:54:17.992Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:03:08.628Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:07:42.440Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:09:25.329Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:10:10.296Z"}
+{"body":{"text":"Testing X API for tweeting with GIF"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"a90127a9c22f8578a87d6d69b37b7123","mimetype":"image/jpeg","originalname":"SocialDefiningLuxury.jpg","path":"uploads/a90127a9c22f8578a87d6d69b37b7123","size":159574},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:10:10.345Z"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-19T18:11:16.858Z","tweetId":"1892275778529673350"}
+{"level":"info","mediaPath":"uploads/a90127a9c22f8578a87d6d69b37b7123","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API for tweeting with GIF","timestamp":"2025-02-19T18:11:16.879Z","tweetId":"1892275778529673350"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:17:00.567Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:17:31.308Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:17:34.413Z"}
+{"body":{"text":"Testing X API for tweeting with GIF"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"d2e7c30e97e73d6126aea53c8bb70c51","mimetype":"image/jpeg","originalname":"SocialDefiningLuxury.jpg","path":"uploads/d2e7c30e97e73d6126aea53c8bb70c51","size":159574},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:17:34.451Z"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-19T18:18:38.321Z","tweetId":"1892277629169914275"}
+{"level":"info","mediaPath":"uploads/d2e7c30e97e73d6126aea53c8bb70c51","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API for tweeting with GIF","timestamp":"2025-02-19T18:18:38.322Z","tweetId":"1892277629169914275"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:19:54.417Z"}
+{"body":{"text":"Testing X API for tweeting with GIF"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"16eb21d039db2350e868eefdebff8bd1","mimetype":"image/jpeg","originalname":"SocialDefiningLuxury.jpg","path":"uploads/16eb21d039db2350e868eefdebff8bd1","size":159574},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:19:54.443Z"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-19T18:20:58.907Z","tweetId":"1892278218859626672"}
+{"level":"info","mediaPath":"uploads/16eb21d039db2350e868eefdebff8bd1","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API for tweeting with GIF","timestamp":"2025-02-19T18:20:58.911Z","tweetId":"1892278218859626672"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:23:07.357Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:23:54.156Z"}
+{"body":{"text":"Testing X API for tweeting with GIF"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"2e03ec787fcc47f27db98b189fa3d045","mimetype":"image/jpeg","originalname":"SocialDefiningLuxury.jpg","path":"uploads/2e03ec787fcc47f27db98b189fa3d045","size":159574},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:23:54.301Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:24:27.329Z"}
+{"body":{"text":"Testing X API for tweeting with Images Beatiful houses"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"5b5fdba85436606ce6f1d9918655e7b4","mimetype":"image/jpeg","originalname":"Luxury-house-design-Top-10-tips-to-add-luxury-to-your-house-FEATURE-compressed.jpg","path":"uploads/5b5fdba85436606ce6f1d9918655e7b4","size":192153},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:24:27.349Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:24:45.130Z"}
+{"body":{"text":"Testing X API for tweeting with Images Beatiful houses - 02"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"71e464b87be94b25e7b5a3f158102eaf","mimetype":"image/webp","originalname":"22b4d9kgjyqlw17wv8f.webp","path":"uploads/71e464b87be94b25e7b5a3f158102eaf","size":508150},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:24:45.147Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:26:50.066Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:27:28.956Z"}
+{"body":{"text":"Testing X API | Beatiful Houses 01"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"b7c944f5fd64241e5148c56720821f39","mimetype":"image/webp","originalname":"22b4d9kgjyqlw17wv8f.webp","path":"uploads/b7c944f5fd64241e5148c56720821f39","size":508150},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:27:29.006Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:27:41.859Z"}
+{"body":{"text":"Testing X API | Beatiful Houses 01"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"342a919f59aafab0b8e7c9a00ceb31d8","mimetype":"image/jpeg","originalname":"1_dXqlLsZjfFwfAW-jyWGmxw.jpg","path":"uploads/342a919f59aafab0b8e7c9a00ceb31d8","size":153757},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:27:41.874Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:27:53.975Z"}
+{"body":{"text":"Testing X API | Beatiful Houses 02"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"af82bb92a58e316beb957d6caff27ab7","mimetype":"image/jpeg","originalname":"SocialDefiningLuxury.jpg","path":"uploads/af82bb92a58e316beb957d6caff27ab7","size":159574},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:27:53.995Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:28:03.532Z"}
+{"body":{"text":"Testing X API | Beatiful Houses 03"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"a5d5db80f7db6eaa6daabceefe3a5994","mimetype":"image/jpeg","originalname":"SocialDefiningLuxury.jpg","path":"uploads/a5d5db80f7db6eaa6daabceefe3a5994","size":159574},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:28:03.557Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-19T18:28:14.785Z"}
+{"body":{"text":"Testing X API | Beatiful Houses 04"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"dac808d053d9584c741eacea9366c4d3","mimetype":"image/jpeg","originalname":"Luxury-house-design-Top-10-tips-to-add-luxury-to-your-house-FEATURE-compressed.jpg","path":"uploads/dac808d053d9584c741eacea9366c4d3","size":192153},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-19T18:28:14.801Z"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-19T18:28:47.054Z","tweetId":"1892280182037188800"}
+{"level":"info","mediaPath":"uploads/342a919f59aafab0b8e7c9a00ceb31d8","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API | Beatiful Houses 01","timestamp":"2025-02-19T18:28:47.055Z","tweetId":"1892280182037188800"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-19T18:28:57.178Z","tweetId":"1892280224093548555"}
+{"level":"info","mediaPath":"uploads/af82bb92a58e316beb957d6caff27ab7","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API | Beatiful Houses 02","timestamp":"2025-02-19T18:28:57.182Z","tweetId":"1892280224093548555"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-19T18:29:06.545Z","tweetId":"1892280264144965765"}
+{"level":"info","mediaPath":"uploads/a5d5db80f7db6eaa6daabceefe3a5994","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API | Beatiful Houses 03","timestamp":"2025-02-19T18:29:06.545Z","tweetId":"1892280264144965765"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-19T18:29:17.681Z","tweetId":"1892280310953304227"}
+{"level":"info","mediaPath":"uploads/dac808d053d9584c741eacea9366c4d3","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API | Beatiful Houses 04","timestamp":"2025-02-19T18:29:17.682Z","tweetId":"1892280310953304227"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:32:49.319Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:32:58.405Z"}
