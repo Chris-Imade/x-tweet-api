@@ -103,3 +103,36 @@
 {"level":"info","mediaPath":"uploads/dac808d053d9584c741eacea9366c4d3","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API | Beatiful Houses 04","timestamp":"2025-02-19T18:29:17.682Z","tweetId":"1892280310953304227"}
 {"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:32:49.319Z"}
 {"level":"info","message":"Server running on port 4951","timestamp":"2025-02-19T18:32:58.405Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T18:56:47.449Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-22T18:58:20.994Z"}
+{"body":{"text":"Testing X API | Beatiful Houses 01"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"3fc3869505037d7108b0667465812a86","mimetype":"image/jpeg","originalname":"1_dXqlLsZjfFwfAW-jyWGmxw.jpg","path":"uploads/3fc3869505037d7108b0667465812a86","size":153757},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-22T18:58:21.024Z"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-22T18:59:33.644Z","tweetId":"1893375093000032669"}
+{"level":"info","mediaPath":"uploads/3fc3869505037d7108b0667465812a86","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"Testing X API | Beatiful Houses 01","timestamp":"2025-02-22T18:59:33.645Z","tweetId":"1893375093000032669"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:03:41.945Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:04:38.771Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:04:55.791Z"}
+{"level":"info","message":"[DELETE] /delete - Body: undefined","timestamp":"2025-02-22T19:05:25.816Z"}
+{"level":"info","message":"[DELETE] /tweet - Body: undefined","timestamp":"2025-02-22T19:05:41.517Z"}
+{"level":"info","message":"Delete Last Tweet Endpoint Accessed","timestamp":"2025-02-22T19:05:41.519Z"}
+{"error":"Request failed with code 400 - Invalid Request: One or more parameters to your request was invalid. (see https://api.twitter.com/2/problems/invalid-request)","level":"error","message":"Failed to Delete Last Tweet","stack":"Error: Request failed with code 400 - Invalid Request: One or more parameters to your request was invalid. (see https://api.twitter.com/2/problems/invalid-request)\n    at RequestHandlerHelper.createResponseError (/Users/henryjohntech/Documents/Builds/backendProjects/x-tweet-api/node_modules/twitter-api-v2/dist/cjs/client-mixins/request-handler.helper.js:104:16)\n    at RequestHandlerHelper.onResponseEndHandler (/Users/henryjohntech/Documents/Builds/backendProjects/x-tweet-api/node_modules/twitter-api-v2/dist/cjs/client-mixins/request-handler.helper.js:262:25)\n    at Gunzip.emit (node:events:514:28)\n    at endReadableNT (node:internal/streams/readable:1376:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)","timestamp":"2025-02-22T19:05:42.967Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:06:25.431Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:06:31.595Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:06:34.097Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:06:42.340Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:07:12.761Z"}
+{"level":"info","message":"[DELETE] /tweet - Body: undefined","timestamp":"2025-02-22T19:07:17.276Z"}
+{"level":"info","message":"Delete Last Tweet Endpoint Accessed","timestamp":"2025-02-22T19:07:17.283Z"}
+{"error":"Request failed with code 429","level":"error","message":"Failed to Delete Last Tweet","stack":"Error: Request failed with code 429\n    at RequestHandlerHelper.createResponseError (/Users/henryjohntech/Documents/Builds/backendProjects/x-tweet-api/node_modules/twitter-api-v2/dist/cjs/client-mixins/request-handler.helper.js:104:16)\n    at RequestHandlerHelper.onResponseEndHandler (/Users/henryjohntech/Documents/Builds/backendProjects/x-tweet-api/node_modules/twitter-api-v2/dist/cjs/client-mixins/request-handler.helper.js:262:25)\n    at Gunzip.emit (node:events:514:28)\n    at endReadableNT (node:internal/streams/readable:1376:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)","timestamp":"2025-02-22T19:07:19.003Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:08:08.848Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:08:22.149Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:08:25.129Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:08:32.448Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:08:51.722Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:08:53.987Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:09:11.759Z"}
+{"level":"info","message":"[POST] /tweet - Body: undefined","timestamp":"2025-02-22T19:12:37.178Z"}
+{"body":{"text":"CHONK at the warzone"},"file":{"destination":"uploads/","encoding":"7bit","fieldname":"media","filename":"9a2872cca3c6eed1d314606f82feb407","mimetype":"image/jpeg","originalname":"WhatsApp Image 2025-02-21 at 7.12.25 PM.jpeg","path":"uploads/9a2872cca3c6eed1d314606f82feb407","size":135992},"level":"info","message":"Tweet Endpoint Accessed","timestamp":"2025-02-22T19:12:37.223Z"}
+{"level":"info","message":"Tweet Successfully Posted","timestamp":"2025-02-22T19:17:42.105Z","tweetId":"1893379658982285812"}
+{"level":"info","mediaPath":"uploads/9a2872cca3c6eed1d314606f82feb407","mediaType":"image/jpeg","message":"Tweet from queue posted","text":"CHONK at the warzone","timestamp":"2025-02-22T19:17:42.105Z","tweetId":"1893379658982285812"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:20:10.795Z"}
+{"level":"info","message":"Server running on port 4951","timestamp":"2025-02-22T19:30:27.563Z"}

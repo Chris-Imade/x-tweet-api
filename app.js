@@ -161,7 +161,8 @@ const processTweetQueue = () => {
     }
   };
 
-  setTimeout(postTweet, 24 * 60 * 60 * 1000); // Schedule tweet to be posted after 24 hours
+  setTimeout(postTweet, 1 * 60 * 1000); // Schedule tweet to be posted after 5 minutes
+  // setTimeout(postTweet, 24 * 60 * 60 * 1000); // Schedule tweet to be posted after 24 hours
 };
 
 // Tweet Endpoint with Verbose Logging
@@ -207,6 +208,20 @@ app.post("/tweet", upload.single("media"), (req, res) => {
   // Process the tweet queue
   processTweetQueue();
 });
+
+// Helper function to retry with exponential backoff
+const retryWithBackoff = async (fn, retries = 5, delay = 1000) => {
+  try {
+    return await fn();
+  } catch (error) {
+    if (retries === 0 || error.code !== 429) {
+      throw error;
+    }
+    logger.warn(`Rate limit exceeded. Retrying in ${delay}ms...`);
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    return retryWithBackoff(fn, retries - 1, delay * 2);
+  }
+};
 
 // Enhanced Error Handling Middleware
 app.use((err, req, res, next) => {
