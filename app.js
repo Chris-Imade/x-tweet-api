@@ -161,8 +161,8 @@ const processTweetQueue = () => {
     }
   };
 
-  // setTimeout(postTweet, 5 * 60 * 1000); // Schedule tweet to be posted after 5 minutes
-  setTimeout(postTweet, 1 * 60 * 60 * 1000); // Schedule tweet to be posted after 24 hours
+  setTimeout(postTweet, 5 * 60 * 1000); // Schedule tweet to be posted after 5 minutes
+  // setTimeout(postTweet, 1 * 60 * 60 * 1000); // Schedule tweet to be posted after 24 hours
 };
 
 // Tweet Endpoint with Verbose Logging
